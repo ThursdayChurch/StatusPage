@@ -52,6 +52,512 @@
 </style>
     </head>
     <body>
+        
+
+        
+
+
+  <div class="page-background">
+	
+      <header id="masthead" class="masthead">
+        <div id="zone-announcementbar" class="zone-instance"><div class="zone-content"><div id="bid_1004" data-zone-location="Site" class="block-instance html-content">
+	<div class="block-content">
+		<div id="ctl00_ctl23_ctl01_ctl00_upnlHtmlContent">
+			
+
+
+
+        
+        
+
+
+
+    
+    
+
+<div class="announcement-bar">
+<script type="text/javascript">
+  jQuery(function() {
+    var days, goLive, hours, intervalId, minutes, seconds;
+
+    // Your churchonline.org url
+    var churchUrl = "//thursdaychurch.churchonline.org"
+
+    goLive = function() {
+      $("#churchonline_counter .time").hide();
+      $("#churchonline_counter .live").show();
+    };
+    loadCountdown = function(data){
+      var seconds_till;
+      $("#churchonline_counter").show();
+      if (data.response.item.isLive) {
+        return goLive();
+      } else {
+        // Parse ISO 8601 date string
+        date = data.response.item.eventStartTime.match(/^(\d{4})-0?(\d+)-0?(\d+)[T ]0?(\d+):0?(\d+):0?(\d+)Z$/)
+        dateString = date[2] + "/" + date[3] + "/" + date[1] + " " + date[4] + ":" + date[5] + ":" + date[6] + " +0000"
+        seconds_till = ((new Date(dateString)) - (new Date())) / 1000;
+        days = Math.floor(seconds_till / 86400);
+        hours = Math.floor((seconds_till % 86400) / 3600);
+        minutes = Math.floor((seconds_till % 3600) / 60);
+        seconds = Math.floor(seconds_till % 60);
+        return intervalId = setInterval(function() {
+          if (--seconds < 0) {
+            seconds = 59;
+            if (--minutes < 0) {
+              minutes = 59;
+              if (--hours < 0) {
+                hours = 23;
+                if (--days < 0) {
+                  days = 0;
+                }
+              }
+            }
+          }
+          $("#churchonline_counter .days").html((days.toString().length < 2) ? "0" + days : days);
+          $("#churchonline_counter .hours").html((hours.toString().length < 2 ? "0" + hours : hours));
+          $("#churchonline_counter .minutes").html((minutes.toString().length < 2 ? "0" + minutes : minutes));
+          $("#churchonline_counter .seconds").html((seconds.toString().length < 2 ? "0" + seconds : seconds));
+          if (seconds === 0 && minutes === 0 && hours === 0 && days === 0) {
+            goLive();
+            return clearInterval(intervalId);
+          }
+        }, 1000);
+      }
+    }
+    days = void 0;
+    hours = void 0;
+    minutes = void 0;
+    seconds = void 0;
+    intervalId = void 0;
+    eventUrl = churchUrl + "/api/v1/events/current"
+    msie = /msie/.test(navigator.userAgent.toLowerCase())
+    if (msie && window.XDomainRequest) {
+        var xdr = new XDomainRequest();
+        xdr.open("get", eventUrl);
+        xdr.onload = function() {
+          loadCountdown(jQuery.parseJSON(xdr.responseText))
+        };
+        xdr.send();
+    } else {
+      $.ajax({
+        url: eventUrl,
+        dataType: "json",
+        crossDomain: true,
+        success: function(data) {
+          loadCountdown(data);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          return console.log(thrownError);
+        }
+      });
+    }
+  });
+</script>
+<style type="text/css">
+  #churchonline_counter .live { display: none; font-weight: bold; }
+</style>
+<span id="churchonline_counter">
+Next service in:
+<span class="live">
+<btn id="ccvlive" class="btn btn-default btn-live">Live</btn>Thursday Church is live!<span> <a href="https://thursdaychurch.org/sso/login">Tune into the service now ></a></span>
+</span>
+  <span class="time">
+    <span class="days btn btn-live"></span> <span class="label">days</span>
+    <span class="hours btn btn-live"></span> <span class="label">hrs</span>
+    <span class="minutes btn btn-live"></span> <span class="label">mins</span>
+    <span class="seconds btn btn-live"></span> <span class="label">secs</span>
+  </span>
+</span>
+</div>
+
+
+        
+        
+
+    
+		</div>
+
+	</div>
+</div></div></div>
+        <div class="masthead-upper">
+          <div class="masthead-brand">
+            <button class="navbar-toggle" type="button" onClick="toggleNavbar(true);">
+              <i class="fa fa-bars"></i>
+            </button>
+            <div id="zone-header" class="zone-instance"><div class="zone-content"><div id="bid_1005" data-zone-location="Site" class="block-instance html-content">
+	<div class="block-content">
+		<div id="ctl00_ctl25_ctl01_ctl00_upnlHtmlContent">
+			
+
+
+
+        
+        
+
+<a class="logo" href="/"><span class="sr-only">Thursday Church</span></a>
+
+
+
+        
+        
+
+    
+		</div>
+
+	</div>
+</div><div id="bid_1235" data-zone-location="Site" class="block-instance ccv-login-status">
+	<div class="block-content">
+		
+
+<ul class="nav navbar-nav loginstatus">    
+    
+    <li id="ctl00_ctl25_ctl02_ctl00_liLogin"><a id="ctl00_ctl25_ctl02_ctl00_lbLogin" href="javascript:__doPostBack(&#39;ctl00$ctl25$ctl02$ctl00$lbLogin&#39;,&#39;&#39;)">Login</a></li>
+</ul>
+<input type="hidden" name="ctl00$ctl25$ctl02$ctl00$hfActionType" id="ctl00_ctl25_ctl02_ctl00_hfActionType" value="Login" />
+
+
+	</div>
+</div><div id="bid_1006" data-zone-location="Site" class="block-instance page-menu">
+	<div class="block-content">
+		<div id="ctl00_ctl25_ctl03_ctl00_upContent">
+			
+    
+
+
+
+
+    
+    
+
+
+
+
+    <ul class="navigation-primary-items">
+        
+            
+            
+            
+            
+
+            <li class="navigation-primary-item ">
+                <button class="navigation-primary-item-button" href="/about-us">About Us</button>
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+
+                        
+                            <a class="navigation-primary-item-a dropdown-content-item" href="/about-us">About Us</a>
+                    
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/about-us/what-we-believe">What We Believe</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/about-us/meet-the-team">Meet The Team</a>
+                            
+                        
+
+                    </div>
+                </div>
+            </li>
+            
+        
+            
+            
+            
+            
+
+            <li class="navigation-primary-item ">
+                <button class="navigation-primary-item-button" href="/locations">Locations</button>
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+
+                        
+                            <div class="locations-dropdown">
+                                <div class="locations-column">
+                                    <a class="navigation-primary-item-a dropdown-content-item" href="/locations">Locations</a>
+                    
+                                    
+                                
+                                </div>
+                            </div>
+                        
+
+                    </div>
+                </div>
+            </li>
+            
+        
+            
+            
+            
+            
+
+            <li class="navigation-primary-item ">
+                <button class="navigation-primary-item-button" href="/ministries">Ministries</button>
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+
+                        
+                            <a class="navigation-primary-item-a dropdown-content-item" href="/ministries">Ministries</a>
+                    
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/kids">Kids</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/students">Students</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/life-groups">LIFE Groups</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/global-missions">Global Missions</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/celebrate-recovery">Celebrate Recovery</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/mobile-food-pantry">Mobile Food Pantry</a>
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/ministries/business">TC Businesses</a>
+                            
+                        
+
+                    </div>
+                </div>
+            </li>
+            
+        
+            
+            
+            
+            
+
+            <li class="navigation-primary-item ">
+                <button class="navigation-primary-item-button" href="/calendar">Events</button>
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+
+                        
+                            <a class="navigation-primary-item-a dropdown-content-item" href="/calendar">Events</a>
+                    
+                            
+                        
+
+                    </div>
+                </div>
+            </li>
+            
+        
+            
+            
+            
+            
+
+            <li class="navigation-primary-item ">
+                <button class="navigation-primary-item-button" href="/watch">Watch</button>
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+
+                        
+                            <a class="navigation-primary-item-a dropdown-content-item" href="/watch">Watch</a>
+                    
+                            
+                                <a class="navigation-primary-item-a dropdown-content-item" href="/page/634">Live</a>
+                            
+                        
+
+                    </div>
+                </div>
+            </li>
+            
+        
+            
+            
+            
+            
+
+            <li class="navigation-primary-item ">
+                <button class="navigation-primary-item-button" href="/giving">Giving</button>
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+
+                        
+                            <a class="navigation-primary-item-a dropdown-content-item" href="/giving">Giving</a>
+                    
+                            
+                        
+
+                    </div>
+                </div>
+            </li>
+            
+        
+    
+            <li class="navigation-primary-item ">
+                <div class="navigation-primary-dropdown-content-wrapper">
+                    <div class="navigation-primary-dropdown-content">
+        
+        
+            <a href="/Login" title="Sign In">
+                <i class="fas fa-fw fa-lg fa-user-circle"></i>
+            </a>
+        
+                    </div>
+                </div>
+            </li>
+    </ul>
+
+
+		</div>
+
+	</div>
+</div></div></div>
+          </div>
+
+          <nav class="masthead-nav">
+            <div class="navbar-collapse js-all-collapse collapse">
+              <div id="zone-navigation" class="zone-instance"><div class="zone-content"></div></div>
+            </div>
+            <div class="navigation-primary-login">
+              <div id="zone-login" class="zone-instance"><div class="zone-content"></div></div>
+            </div>
+          </nav>
+        </div>
+        <div class="masthead-fullmenu offscreen">
+          <div id="zone-fullmenu" class="zone-instance"><div class="zone-content"><div id="bid_1110" data-zone-location="Page" class="block-instance page-menu">
+	<div class="block-content">
+		<div id="ctl00_ctl31_ctl01_ctl00_upContent">
+			
+    
+
+<div class="navigation-mobile-title">
+    <div class="navigation-mobile-title-search-wrapper">
+        Menu
+        <a class="navigation-mobile-magnify mdi mdi-magnify" href="/search"></a>
+    </div>
+    <button class="mdi mdi-close navigation-mobile-close" type="button" onClick="toggleNavbar(false);"></button>
+</div>
+
+<ul class="navigation-mobile-items">
+    
+
+    
+        
+            
+                <li>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle navigation-mobile-item" type="button" data-toggle="dropdown" style="border: 0px;">About Us<b class="fa fa-caret-down"></b></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="navigation-mobile-item" href="/about-us">About Us</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/about-us/what-we-believe">What We Believe</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/about-us/meet-the-team">Meet The Team</a></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            
+        
+            
+                <li><a class="navigation-mobile-item" href="/locations">Locations</a></li>
+            
+        
+            
+                <li>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle navigation-mobile-item" type="button" data-toggle="dropdown" style="border: 0px;">Ministries<b class="fa fa-caret-down"></b></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="navigation-mobile-item" href="/ministries">Ministries</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/kids">Kids</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/students">Students</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/life-groups">LIFE Groups</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/global-missions">Global Missions</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/celebrate-recovery">Celebrate Recovery</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/mobile-food-pantry">Mobile Food Pantry</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/ministries/business">TC Businesses</a></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            
+        
+            
+                <li>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle navigation-mobile-item" type="button" data-toggle="dropdown" style="border: 0px;">Events<b class="fa fa-caret-down"></b></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="navigation-mobile-item" href="/calendar">Events</a></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            
+        
+            
+                <li>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle navigation-mobile-item" type="button" data-toggle="dropdown" style="border: 0px;">Watch<b class="fa fa-caret-down"></b></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="navigation-mobile-item" href="/watch">Watch</a></li>
+                            
+                                <li><a class="navigation-mobile-item" href="/page/634">Live</a></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            
+        
+            
+                <li><a class="navigation-mobile-item" href="/giving">Giving</a></li>
+            
+        
+
+    
+
+    
+        <li><a class="navigation-mobile-item" href="/register">Register</a></li>
+        <li><a class="navigation-mobile-item" href="/login">Login</a></li>
+    
+</ul>
+
+<script>
+    function logout() {
+        
+        var pageId = `605`;
+
+        $.ajax({
+            url: "/api/RockAuth/Logout?currPageId=" + pageId,
+            type: "GET",
+            xhrFields: {
+                withCredentials: true
+            }
+        }).done(function (returnData) {
+
+            // if true is returned, we're not allowed to view this page anonymously, so redirect them.
+            if (returnData == "True") {
+                var uri = window.location.protocol + "//" + window.location.host + "/home";
+                location.replace(uri);
+            }
+            else {
+                location.reload();
+            }
+        });
+    }
+</script>
+
+
+
+		</div>
+
+	</div>
+</div></div></div>
+        </div>
+      </header>
+        
+        
+        
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
